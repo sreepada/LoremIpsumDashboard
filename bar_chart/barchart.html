@@ -68,80 +68,130 @@ function httpGet(theUrl)
     return xmlHttp.responseText;
 }
 
-var data = httpGet("http://localhost:8983/solr/select?q=text:oil&fl=id,title&wt=json&indent=true&rows=1000");
+
+function plot_bar()
+{
 
 
-var margin = {top: 40, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-
-var formatPercent = d3.format("");
-
-var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .1);
-
-var y = d3.scale.linear()
-    .range([height, 0]);
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .tickFormat(formatPercent);
-
-var tip = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([-10, 0])
-  .html(function(d) {
-    return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
-  })
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-svg.call(tip);
-
-d3.csv("bar.csv", type, function(error, data) {
-  x.domain(data.map(function(d) { return d.letter; }));
-  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Frequency");
-
-  svg.selectAll(".bar")
-      .data(data)
-    .enter().append("rect")
-      .attr("class", "bar")
-      .attr("x", function(d) { return x(d.letter); })
-      .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.frequency); })
-      .attr("height", function(d) { return height - y(d.frequency); })
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide)
-
-});
-
-function type(d) {
-  d.frequency = +d.frequency;
-  return d;
+    var margin = {top: 40, right: 20, bottom: 30, left: 40},
+        width = 500 - margin.left - margin.right,
+        height = 300 - margin.top - margin.bottom;
+        //width = 960 - margin.left - margin.right,
+        //height = 500 - margin.top - margin.bottom;
+    
+    var formatPercent = d3.format("");
+    
+    var x = d3.scale.ordinal()
+        .rangeRoundBands([0, width], .1);
+    
+    var y = d3.scale.linear()
+        .range([height, 0]);
+    
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom");
+    
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        .tickFormat(formatPercent);
+    
+    var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([-10, 0])
+      .html(function(d) {
+        return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span><strong> Location:</strong> <span>" + d.letter + "</span>";
+      })
+    
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    
+    svg.call(tip);
+    var str_data = httpGet("http://localhost:8983/solr/select?q=*:*&fl=id,location_s__s&wt=json&indent=true&rows=1000");
+    
+    var json_data = JSON.parse(str_data)["response"]["docs"];
+    var my_array = [];
+    
+    json_data.map(function(d){ 
+            if("location_s__s" in d)
+            {
+                var locations = d["location_s__s"].split(",");
+                for(i = 0; i < locations.length; i++)
+                {
+                    loc = locations[i].trim();
+                    if(!(loc in my_array))
+                    {
+                        my_array[loc]  = 1;
+                    }
+                    else
+                    {
+                        my_array[loc] += 1;
+                    }
+                }
+            }
+        });
+    
+    var data_1 = [];
+    for(key in my_array)
+    {
+        value = my_array[key];
+        data_1[data_1.length] = {"letter":key, "frequency":value};
+    }
+    data_1.sort(function(a, b) {return b["frequency"] - a["frequency"]});
+    
+    var len = data_1.length;
+    if(len > 10)
+    {
+        len = 10;
+    }
+    
+    var data = []
+    
+    for(i = 0; i < len; i++)
+    {
+        data[data.length] = data_1[i];
+    }
+    
+    
+    //data = [{"letter":"A", "frequency":3}, {"letter":"B", "frequency":20}];
+    x.domain(data.map(function(d) { return d.letter; }));
+    y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+    
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+    
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+      .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Count");
+    
+    svg.selectAll(".bar")
+        .data(data)
+      .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.letter); })
+        .attr("width", x.rangeBand())
+        .attr("y", function(d) { return y(d.frequency); })
+        .attr("height", function(d) { return height - y(d.frequency); })
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide)
+    
+    function type(d) {
+      d.frequency = +d.frequency;
+      return d;
+    }
 }
+
+plot_bar();
 
 </script>
