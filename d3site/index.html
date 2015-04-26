@@ -15,10 +15,6 @@
   stroke-width: 1.5px;
 }
 
-.node {
-  font: 10px sans-serif;
-}
-
 .link {
   fill: none;
   stroke: #ccc;
@@ -35,6 +31,102 @@ text {
   font-size: 12px;
 }
 
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: auto;
+  position: relative;
+  width: 960px;
+}
+
+form {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.node {
+  border: solid 1px white;
+  font: 10px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
+
+.top-buffer { margin-top:80px; }
+
+/* TREE */
+.node rect {
+  cursor: pointer;
+  fill: #fff;
+  fill-opacity: .5;
+  stroke: #3182bd;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  font: 10px sans-serif;
+  pointer-events: none;
+}
+
+path.link {
+  fill: none;
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
+}
+
+
+/*  BAR */
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: orange;
+}
+
+.bar:hover {
+  fill: orangered ;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+
 </style>
 
 
@@ -45,11 +137,22 @@ text {
   <div class="jumbotron">
 
   </div>
-  <div class="row" id="sunburst">
+  <div class="row top-buffer" id="sunburst">
   </div>
-  <div class="row" id="dendogram">
+  <div class="row top-buffer" id="dendogram">
 
   </div>
+  <div class="row top-buffer" id="bubblechart">
+
+  </div>  
+  <div class="row top-buffer" id="treemap">
+
+  </div> 
+
+  <div class="row top-buffer" id="citree">
+
+  </div> 
+  
 </div>
 
 </body>
@@ -57,13 +160,18 @@ text {
 <script>
 $(document).ready(function() {
 
-  sunburst()
-  dendogram()
+  sunburst();
+  dendogram();
+  bubblechart();
+  treemap();
+  citree();
+  //plot_bar();
+
 });
 
 
 // Interpolate the scales!
-function arcTween(d) {
+function arcTween(d,x,y, radius) {
   var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
       yd = d3.interpolate(y.domain(), [d.y, 1]),
       yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
@@ -74,20 +182,20 @@ function arcTween(d) {
   };
 }
 
-function computeTextRotation(d) {
+function computeTextRotation(d,x,y) {
   return (x(d.x + d.dx / 2) - Math.PI / 2) / Math.PI * 180;
 }
 
 function sunburst () {
 
-  var width = 960,
-      height = 960;
-  radius = Math.min(width, height) / 2;
+  var width = 960;
+  var height = 1200;
+  var radius = Math.min(width, height) / 2;
 
-  x = d3.scale.linear()
+  var x = d3.scale.linear()
       .range([0, 2 * Math.PI]);
 
-  y = d3.scale.linear()
+  var y = d3.scale.linear()
       .range([0, radius]);
 
   var color = d3.scale.category20c();
@@ -101,7 +209,7 @@ function sunburst () {
   var partition = d3.layout.partition()
       .value(function(d) { return d.size; });
 
-  arc = d3.svg.arc()
+  var arc = d3.svg.arc()
       .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
       .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
       .innerRadius(function(d) { return Math.max(0, y(d.y)); })
@@ -117,8 +225,8 @@ function sunburst () {
       .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
       .on("click", click);
 
-    text = g.append("text")
-      .attr("transform", function(d) { return "rotate(" + computeTextRotation(d) + ")"; })
+    var text = g.append("text")
+      .attr("transform", function(d) { return "rotate(" + computeTextRotation(d,x,y) + ")"; })
       .attr("x", function(d) { return y(d.y); })
       .attr("dx", "6") // margin
       .attr("dy", ".35em") // vertical-align
@@ -130,7 +238,7 @@ function sunburst () {
 
       path.transition()
         .duration(750)
-        .attrTween("d", arcTween(d))
+        .attrTween("d", arcTween(d,x,y,radius))
         .each("end", function(e, i) {
             // check if the animated element's data e lies within the visible angle span given in d
             if (e.x >= d.x && e.x < (d.x + d.dx)) {
@@ -139,7 +247,7 @@ function sunburst () {
               // fade in the text element and recalculate positions
               arcText.transition().duration(750)
                 .attr("opacity", 1)
-                .attr("transform", function() { return "rotate(" + computeTextRotation(e) + ")" })
+                .attr("transform", function() { return "rotate(" + computeTextRotation(e,x,y) + ")" })
                 .attr("x", function(d) { return y(d.y); });
             }
         });
@@ -154,7 +262,7 @@ function sunburst () {
 /////////////////////////////////// DENDOGRAM BEGINS ///////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 function dendogram () {
-var diameter = 960;
+var diameter = 1200;
 
 var tree = d3.layout.tree()
     .size([360, diameter / 2 - 120])
@@ -165,7 +273,7 @@ var diagonal = d3.svg.diagonal.radial()
 
 var svg2 = d3.select("#dendogram").append("svg")
     .attr("width", diameter)
-    .attr("height", diameter - 150)
+    .attr("height", diameter)
   .append("g")
     .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
@@ -197,6 +305,412 @@ d3.json("arctic_ocean.json", function(error, root) {
 
 d3.select(self.frameElement).style("height", diameter - 150 + "px");
 
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////// BUBBLE CHART /////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+// Returns a flattened hierarchy containing all leaf nodes under the root.
+function classes(root) {
+  var classes = [];
+
+  function recurse(name, node) {
+    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+    else classes.push({packageName: name, className: node.name, value: Math.random()});
+  }
+
+  recurse(null, root);
+  return {children: classes};
+}
+
+function bubblechart() {
+    var diameter = 960,
+      format = d3.format(",d"),
+      color = d3.scale.category20c();
+
+  var bubble = d3.layout.pack()
+      .sort(null)
+      .size([diameter, diameter])
+      .padding(1.5);
+
+  var svg = d3.select("#bubblechart").append("svg")
+      .attr("width", diameter)
+      .attr("height", diameter)
+      .attr("class", "bubble");
+
+  d3.json("arctic_ocean.json", function(error, root) {
+    var node = svg.selectAll(".node")
+        .data(bubble.nodes(classes(root))
+        .filter(function(d) { return !d.children; }))
+      .enter().append("g")
+        .attr("class", "node")
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+    node.append("title")
+        .text(function(d) { return d.className + ": " + format(d.value); });
+
+    node.append("circle")
+        .attr("r", function(d) { return d.r; })
+        .style("fill", function(d) { return color(d.packageName); });
+
+    node.append("text")
+        .attr("dy", ".3em")
+        .style("text-anchor", "middle")
+        .text(function(d) { return d.className.substring(0, d.r / 3); });
+  });
+  d3.select(self.frameElement).style("height", diameter + "px");
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////TREEMAP////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+function position() {
+  this.style("left", function(d) { return d.x + "px"; })
+      .style("top", function(d) { return d.y + "px"; })
+      .style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })
+      .style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; });
+}
+
+function treemap() {
+  var margin = {top: 40, right: 10, bottom: 10, left: 10},
+      width = 960 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
+
+  var color = d3.scale.category20c();
+
+  var treemap = d3.layout.treemap()
+      .size([width, height])
+      .sticky(true)
+      .value(function(d) { return d.size; });
+
+  var div = d3.select("#treemap").append("div")
+      .style("position", "relative")
+      .style("width", (width + margin.left + margin.right) + "px")
+      .style("height", (height + margin.top + margin.bottom) + "px")
+      .style("left", margin.left + "px")
+      .style("top", margin.top + "px");
+
+  d3.json("arctic_ocean.json", function(error, root) {
+    var node = div.datum(root).selectAll(".node")
+        .data(treemap.nodes)
+      .enter().append("div")
+        .attr("class", "node")
+        .call(position)
+        .style("background", function(d) { return d.children ? color(d.name) : null; })
+        .text(function(d) { return d.children ? null : d.name; });
+
+    d3.selectAll("input").on("change", function change() {
+      var value = this.value === "count"
+          ? function() { return 1; }
+          : function(d) { return d.size; };
+
+      node
+          .data(treemap.value(value).nodes)
+        .transition()
+          .duration(1500)
+          .call(position);
+    });
+  });  
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////COLLAPSIBLE TREE///////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+function click(d) {
+  if (d.children) {
+    d._children = d.children;
+    d.children = null;
+  } else {
+    d.children = d._children;
+    d._children = null;
+  }
+  update(d);
+}
+
+
+
+function color(d) {
+  return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#fd8d3c";
+}
+
+function update(source, tree, barHeight, barWidth, margin, duration, svg, diagonal, i) {
+
+  // Compute the flattened node list. TODO use d3.layout.hierarchy.
+  var nodes = tree.nodes(source);
+
+  var height2 = Math.max(500, nodes.length * barHeight + margin.top + margin.bottom);
+
+  d3.select("svg#citsvgid").transition()
+      .duration(duration)
+      .attr("height", height2);
+
+  d3.select(self.frameElement).transition()
+      .duration(duration)
+      .style("height", height2 + "px");
+
+  // Compute the "layout".
+  nodes.forEach(function(n, i) {
+    n.x = i * barHeight;
+  });
+
+  // Update the nodes…
+  var node = svg.selectAll("g.node")
+      .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  var nodeEnter = node.enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+      .style("opacity", 1e-6);
+
+  // Enter any new nodes at the parent's previous position.
+  nodeEnter.append("rect")
+      .attr("y", -barHeight / 2)
+      .attr("height", barHeight)
+      .attr("width", barWidth)
+      .style("fill", color);
+      // .on("click", function(source, tree, barHeight, barWidth, margin, duration, svg, diagonal, i) {
+      //     if (source.children) {
+      //       source._children = source.children;
+      //       source.children = null;
+      //     } else {
+      //       source.children = source._children;
+      //       source._children = null;
+      //     }
+      //     update(source, tree, barHeight, barWidth, margin, duration, svg, diagonal, i);
+
+      // });
+  nodeEnter.append("text")
+      .attr("dy", 3.5)
+      .attr("dx", 5.5)
+      .text(function(d) { return d.name; });
+
+  // Transition nodes to their new position.
+  nodeEnter.transition()
+      .duration(duration)
+      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+      .style("opacity", 1);
+
+  node.transition()
+      .duration(duration)
+      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+      .style("opacity", 1)
+    .select("rect")
+      .style("fill", color);
+
+  // Transition exiting nodes to the parent's new position.
+  node.exit().transition()
+      .duration(duration)
+      .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+      .style("opacity", 1e-6)
+      .remove();
+
+  // Update the links…
+  var link = svg.selectAll("path.link")
+      .data(tree.links(nodes), function(d) { return d.target.id; });
+
+  // Enter any new links at the parent's previous position.
+  link.enter().insert("path", "g")
+      .attr("class", "link")
+      .attr("d", function(d) {
+        var o = {x: source.x0, y: source.y0};
+        return diagonal({source: o, target: o});
+      })
+    .transition()
+      .duration(duration)
+      .attr("d", diagonal);
+
+  // Transition links to their new position.
+  link.transition()
+      .duration(duration)
+      .attr("d", diagonal);
+
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+      .duration(duration)
+      .attr("d", function(d) {
+        var o = {x: source.x, y: source.y};
+        return diagonal({source: o, target: o});
+      })
+      .remove();
+
+  // Stash the old positions for transition.
+  nodes.forEach(function(d) {
+    d.x0 = d.x;
+    d.y0 = d.y;
+  });
+}
+
+function citree() {
+
+  var margin = {top: 30, right: 20, bottom: 30, left: 20},
+      width = 960 - margin.left - margin.right,
+      barHeight = 20,
+      barWidth = width * .8;
+
+  var i = 0,
+      duration = 400,
+      root;
+
+  var tree = d3.layout.tree()
+      .nodeSize([0, 20]);
+
+  var diagonal = d3.svg.diagonal()
+      .projection(function(d) { return [d.y, d.x]; });
+
+  var svg = d3.select("#citree").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("id","citsvgid")
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  d3.json("arctic_ocean.json", function(error, flare) {
+    flare.x0 = 0;
+    flare.y0 = 0;
+    update(root = flare, tree, barHeight, barWidth, margin, duration, svg, diagonal, i);
+  });
+
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////BAR CHART////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+function httpGet(theUrl)
+{
+    var xmlHttp = null;
+
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false );
+    xmlHttp.send();
+    return xmlHttp.responseText;
+}
+
+function plot_bar()
+{
+
+
+    var margin = {top: 40, right: 20, bottom: 30, left: 40},
+        width = 500 - margin.left - margin.right,
+        height = 300 - margin.top - margin.bottom;
+        //width = 960 - margin.left - margin.right,
+        //height = 500 - margin.top - margin.bottom;
+    
+    var formatPercent = d3.format("");
+    
+    var x = d3.scale.ordinal()
+        .rangeRoundBands([0, width], .1);
+    
+    var y = d3.scale.linear()
+        .range([height, 0]);
+    
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom");
+    
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        .tickFormat(formatPercent);
+    
+    var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([-10, 0])
+      .html(function(d) {
+        return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span><strong> Location:</strong> <span>" + d.letter + "</span>";
+      })
+    
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    
+    svg.call(tip);
+    var str_data = httpGet("http://localhost:8983/solr/select?q=*:*&fl=id,location_s__s&wt=json&indent=true&rows=1000");
+    
+    var json_data = JSON.parse(str_data)["response"]["docs"];
+    var my_array = [];
+    
+    json_data.map(function(d){ 
+            if("location_s__s" in d)
+            {
+                var locations = d["location_s__s"].split(",");
+                for(i = 0; i < locations.length; i++)
+                {
+                    loc = locations[i].trim();
+                    if(!(loc in my_array))
+                    {
+                        my_array[loc]  = 1;
+                    }
+                    else
+                    {
+                        my_array[loc] += 1;
+                    }
+                }
+            }
+        });
+    
+    var data_1 = [];
+    for(key in my_array)
+    {
+        value = my_array[key];
+        data_1[data_1.length] = {"letter":key, "frequency":value};
+    }
+    data_1.sort(function(a, b) {return b["frequency"] - a["frequency"]});
+    
+    var len = data_1.length;
+    if(len > 10)
+    {
+        len = 10;
+    }
+    
+    var data = []
+    
+    for(i = 0; i < len; i++)
+    {
+        data[data.length] = data_1[i];
+    }
+    
+    
+    //data = [{"letter":"A", "frequency":3}, {"letter":"B", "frequency":20}];
+    x.domain(data.map(function(d) { return d.letter; }));
+    y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+    
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+    
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+      .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Count");
+    
+    svg.selectAll(".bar")
+        .data(data)
+      .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.letter); })
+        .attr("width", x.rangeBand())
+        .attr("y", function(d) { return y(d.frequency); })
+        .attr("height", function(d) { return height - y(d.frequency); })
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide)
+    
+    function type(d) {
+      d.frequency = +d.frequency;
+      return d;
+    }
 }
 </script>
 </html>
