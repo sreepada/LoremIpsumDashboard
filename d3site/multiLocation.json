@@ -1,0 +1,472 @@
+{
+    "name": "all",
+    "children": [
+    {
+        "name": " Arctic Ocean",
+        "children": [
+        {
+            "name": "2009",
+            "children": [
+            {
+                "name": "Oceans",
+                "size": 6
+            },
+            {
+                "name": "Ocean Circulation",
+                "size": 5
+            },
+            {
+                "name": "Ocean Mixed Layer",
+                "size": 4
+            },
+            {
+                "name": "Buoy Position",
+                "size": 1
+            },
+            {
+                "name": "Sea Ice",
+                "size": 1
+            },
+            {
+                "name": "Salinity",
+                "size": 1
+            }
+            ]
+        },
+        {
+            "name": "2013",
+            "children": [
+            {
+                "name": "Oceans",
+                "size": 2
+            },
+            {
+                "name": "Marine Sediments",
+                "size": 2
+            },
+            {
+                "name": "Sediment Chemistry",
+                "size": 2
+            }
+            ]
+        },
+        {
+            "name": "2010",
+            "children": [
+            {
+                "name": "Oceans",
+                "size": 1
+            },
+            {
+                "name": "Ocean Circulation",
+                "size": 1
+            },
+            {
+                "name": "Ocean Mixed Layer",
+                "size": 1
+            }
+            ]
+        },
+        {
+            "name": "2012",
+            "children": [
+            {
+                "name": "Cryosphere",
+                "size": 1
+            },
+            {
+                "name": "Sea Ice",
+                "size": 1
+            },
+            {
+                "name": "Sea Ice Motion",
+                "size": 1
+            }
+            ]
+        },
+        {
+            "name": "2014",
+            "children": [
+            {
+                "name": "Oceans",
+                "size": 1
+            },
+            {
+                "name": "Ocean Temperature",
+                "size": 1
+            },
+            {
+                "name": "Water Temperature Oceans",
+                "size": 1
+            },
+            {
+                "name": "Salinity/Density",
+                "size": 1
+            }
+            ]
+        },
+        {
+            "name": "2015",
+            "children": [
+            {
+                "name": "Oceans",
+                "size": 1
+            },
+            {
+                "name": "Ocean Chemistry",
+                "size": 4
+            },
+            {
+                "name": "Stable Isotopes Oceans",
+                "size": 1
+            },
+            {
+                "name": "Trace Elements Oceans",
+                "size": 1
+            },
+            {
+                "name": "Nutrients Oceans",
+                "size": 1
+            },
+            {
+                "name": "Carbon",
+                "size": 1
+            }
+            ]
+        }
+        ]
+    },
+    {
+        "name": " Geographic Region,Arctic",
+        "children": [
+        {
+            "name": "2014",
+            "children": [
+            {
+                "name": "Land Surface",
+                "size": 2
+            },
+            {
+                "name": "Landscape",
+                "size": 2
+            },
+            {
+                "name": "Landscape Ecology",
+                "size": 2
+            },
+            {
+                "name": "Biosphere",
+                "size": 2
+            },
+            {
+                "name": "Terrestrial Ecosystems",
+                "size": 1
+            }
+            ]
+        },
+        {
+            "name": "2013",
+            "children": [
+            {
+                "name": "Land Surface",
+                "size": 3
+            },
+            {
+                "name": "Landscape",
+                "size": 3
+            },
+            {
+                "name": "Landscape Ecology",
+                "size": 3
+            }
+            ]
+        }
+        ]
+    },
+    {
+        "name": " Geographic Region,Polar",
+        "children": [
+        {
+            "name": "2013",
+            "children": [
+            {
+                "name": "Land Surface",
+                "size": 5
+            },
+            {
+                "name": "Landscape",
+                "size": 4
+            },
+            {
+                "name": "Landscape Ecology",
+                "size": 4
+            },
+            {
+                "name": "Surface Radiative Properties",
+                "size": 1
+            },
+            {
+                "name": "Reflectance",
+                "size": 1
+            }
+            ]
+        }
+        ]
+    },
+    {
+        "name": " Arctic Ocean,Beaufort Sea",
+        "children": [
+        {
+            "name": "2009",
+            "children": [
+            {
+                "name": "Oceans",
+                "size": 1
+            },
+            {
+                "name": "Salinity/Density",
+                "size": 1
+            },
+            {
+                "name": "Conductivity",
+                "size": 1
+            }
+            ]
+        },
+        {
+            "name": "2011",
+            "children": [
+            {
+                "name": "Oceans",
+                "size": 1
+            },
+            {
+                "name": "Ocean Circulation",
+                "size": 2
+            },
+            {
+                "name": "Upwelling/Downwelling Oceans",
+                "size": 1
+            },
+            {
+                "name": "Ocean Currents Oceans",
+                "size": 1
+            },
+            {
+                "name": "Ocean Chemistry",
+                "size": 3
+            },
+            {
+                "name": "Nitrate Oceans",
+                "size": 1
+            },
+            {
+                "name": "Sea Ice",
+                "size": 1
+            },
+            {
+                "name": "Ice Depth/Thickness Oceans",
+                "size": 1
+            },
+            {
+                "name": "Ocean Temperature",
+                "size": 2
+            },
+            {
+                "name": "Water Temperature Oceans",
+                "size": 1
+            },
+            {
+                "name": "Ocean Optics",
+                "size": 2
+            },
+            {
+                "name": "Turbidity Oceans",
+                "size": 1
+            },
+            {
+                "name": "Potential Temperature Oceans",
+                "size": 1
+            },
+            {
+                "name": "Oxygen Oceans",
+                "size": 1
+            },
+            {
+                "name": "Ph Oceans",
+                "size": 1
+            },
+            {
+                "name": "Salinity/Density",
+                "size": 1
+            },
+            {
+                "name": "Salinity Oceans",
+                "size": 1
+            },
+            {
+                "name": "Ocean Pressure",
+                "size": 1
+            },
+            {
+                "name": "Sea Level Pressure Oceans",
+                "size": 1
+            },
+            {
+                "name": "Fluorescence",
+                "size": 1
+            }
+            ]
+        }
+        ]
+    },
+    {
+        "name": " Atlantic Ocean,North Atlantic Ocean,Svalbard And Jan Mayen",
+        "children": [
+        {
+            "name": "2013",
+            "children": [
+            {
+                "name": "Cryosphere",
+                "size": 1
+            },
+            {
+                "name": "Frozen Ground",
+                "size": 2
+            },
+            {
+                "name": "Periglacial Processes Cryosphere",
+                "size": 1
+            },
+            {
+                "name": "Soil Temperature Paleoclimate",
+                "size": 1
+            },
+            {
+                "name": "Land Records",
+                "size": 1
+            },
+            {
+                "name": "Sediments Land Surface",
+                "size": 2
+            },
+            {
+                "name": "Erosion/Sedimentation",
+                "size": 6
+            },
+            {
+                "name": "Suspended Solids Cryosphere",
+                "size": 1
+            },
+            {
+                "name": "Glaciers/Ice Sheets",
+                "size": 4
+            },
+            {
+                "name": "Glacier Mass Balance/Ice Sheet Mass Balance Paleoclimate",
+                "size": 2
+            },
+            {
+                "name": "Ocean/Lake Records",
+                "size": 3
+            },
+            {
+                "name": "Lake Levels Paleoclimate",
+                "size": 1
+            },
+            {
+                "name": "Varve Deposits Land Surface",
+                "size": 1
+            },
+            {
+                "name": "Land Temperature",
+                "size": 1
+            },
+            {
+                "name": "Land Surface Temperature Land Surface",
+                "size": 1
+            },
+            {
+                "name": "Sedimentation Terrestrial Hydrosphere",
+                "size": 1
+            },
+            {
+                "name": "Sediments Cryosphere",
+                "size": 1
+            },
+            {
+                "name": "Glaciers Land Surface",
+                "size": 1
+            },
+            {
+                "name": "Degradation Terrestrial Hydrosphere",
+                "size": 1
+            },
+            {
+                "name": "Glaciers Oceans",
+                "size": 1
+            },
+            {
+                "name": "Ocean Temperature",
+                "size": 1
+            },
+            {
+                "name": "Water Temperature Land Surface",
+                "size": 1
+            },
+            {
+                "name": "Entrainment Land Surface",
+                "size": 1
+            },
+            {
+                "name": "Sediment Transport Oceans",
+                "size": 2
+            },
+            {
+                "name": "Marine Sediments",
+                "size": 2
+            },
+            {
+                "name": "Turbidity",
+                "size": 1
+            }
+            ]
+        }
+        ]
+    },
+    {
+        "name": " Geographic Region,Arctic Arctic Ocean,Chukchi Sea Pacific Ocean,North Pacific Ocean,Bering Sea",
+        "children": [
+        {
+            "name": "2014",
+            "children": [
+            {
+                "name": "Oceans",
+                "size": 1
+            },
+            {
+                "name": "Marine Environment Monitoring Oceans",
+                "size": 1
+            },
+            {
+                "name": "Ocean Chemistry",
+                "size": 3
+            },
+            {
+                "name": "Ph Oceans",
+                "size": 1
+            },
+            {
+                "name": "Carbon Dioxide Oceans",
+                "size": 1
+            },
+            {
+                "name": "Alkalinity",
+                "size": 1
+            }
+            ]
+        }
+        ]
+    }
+    ]
+}

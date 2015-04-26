@@ -1575,7 +1575,6 @@ console.log("max value is: " + max);
 var min_year_data = httpGet("http://localhost:8983/solr/select?q=date_created_s:%20*" + min + "*&wt=json&indent=true&rows=10&facet=true&facet.field=science_keywords_s");
 var max_year_data = httpGet("http://localhost:8983/solr/select?q=date_created_s:%20*" + max + "*&wt=json&indent=true&rows=10&facet=true&facet.field=science_keywords_s");
 
-
 min_year_data = {
     "responseHeader":{
         "status":0,
