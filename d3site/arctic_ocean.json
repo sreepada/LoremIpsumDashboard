@@ -1,0 +1,466 @@
+{
+    "name": " Arctic Ocean",
+    "children": [
+        {
+            "name": "Autonomous Ocean Flux Buoy 10",
+            "children": [
+                {
+                    "name": "Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Circulation",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Mixed Layer",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Autonomous Ocean Flux Buoy 4",
+            "children": [
+                {
+                    "name": "Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Circulation",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Mixed Layer",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Autonomous Ocean Flux Buoy 2",
+            "children": [
+                {
+                    "name": "Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Circulation",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Mixed Layer",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Autonomous Ocean Flux Buoy 12",
+            "children": [
+                {
+                    "name": "Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Circulation",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Mixed Layer",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Autonomous Ocean Flux Buoy 11",
+            "children": [
+                {
+                    "name": "Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Circulation",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Mixed Layer",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Sea Ice Motion in the Arctic Ocean Switchyard",
+            "children": [
+                {
+                    "name": "Cryosphere",
+                    "size": 100
+                },
+                {
+                    "name": "Sea Ice",
+                    "size": 100
+                },
+                {
+                    "name": "Sea Ice Motion",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Atqasuk Spectrometer Data 2013 - Ocean Optics, Jaz - 1",
+            "children": [
+                {
+                    "name": "Land Surface",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape Ecology",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Imnavait Spectrometer Data 2012 - Ocean Optics, Jaz Combo-2 - 1",
+            "children": [
+                {
+                    "name": "Land Surface",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape Ecology",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Toolik Spectrometer Data 2014 - Ocean Optics, Jaz",
+            "children": [
+                {
+                    "name": "Biosphere",
+                    "size": 100
+                },
+                {
+                    "name": "Terrestrial Ecosystems",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Imnavait Spectrometer Data 2012 - Ocean Optics, Jaz - 2",
+            "children": [
+                {
+                    "name": "Land Surface",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape Ecology",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Arctic Ocean Acidification: Bering Strait Time Series",
+            "children": [
+                {
+                    "name": "Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Marine Environment Monitoring Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Chemistry",
+                    "size": 100
+                },
+                {
+                    "name": "Ph Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Chemistry",
+                    "size": 100
+                },
+                {
+                    "name": "Carbon Dioxide Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Chemistry",
+                    "size": 100
+                },
+                {
+                    "name": "Alkalinity",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Imnavait Spectrometer Data 2013 - Ocean Optics, Jaz - 1",
+            "children": [
+                {
+                    "name": "Land Surface",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape Ecology",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Imnavait Spectrometer Data 2014 - Ocean Optics, Jaz",
+            "children": [
+                {
+                    "name": "Land Surface",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape Ecology",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Toolik Spectrometer Data 2012 - Ocean Optics, Jaz - 1",
+            "children": [
+                {
+                    "name": "Land Surface",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape Ecology",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Barrow Spectrometer Data 2013 - Ocean Optics, Jaz - 1",
+            "children": [
+                {
+                    "name": "Land Surface",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape Ecology",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Atqasuk Spectrometer Data 2014 - Ocean Optics, Jaz",
+            "children": [
+                {
+                    "name": "Land Surface",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape Ecology",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Barrow Spectrometer Data 2014 - Ocean Optics, Jaz",
+            "children": [
+                {
+                    "name": "Biosphere",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Toolik Spectrometer Data 2012 - Ocean Optics, Jaz - 2",
+            "children": [
+                {
+                    "name": "Land Surface",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape",
+                    "size": 100
+                },
+                {
+                    "name": "Landscape Ecology",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Arctic Ocean AXCTDs NPEO-IPY and Beyond",
+            "children": [
+                {
+                    "name": "Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Salinity/Density",
+                    "size": 100
+                },
+                {
+                    "name": "Conductivity",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Imnavait Spectrometer Data 2012 - Ocean Optics, Jaz - 1",
+            "children": [
+                {
+                    "name": "Land Surface",
+                    "size": 100
+                },
+                {
+                    "name": "Surface Radiative Properties",
+                    "size": 100
+                },
+                {
+                    "name": "Reflectance",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Collaborative Research: Eurasian and Makarov basins observational network targets changes in the Arctic Ocean",
+            "children": [
+                {
+                    "name": "Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Temperature",
+                    "size": 100
+                },
+                {
+                    "name": "Water Temperature Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Salinity/Density",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "North Pole Environmental Observatory NPEO J-CAD Drifting Buoy Data Arctic Ocean 2000-2002",
+            "children": [
+                {
+                    "name": "Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Circulation",
+                    "size": 100
+                },
+                {
+                    "name": "Buoy Position",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Collaborative Research: Eurasian and Makarov basins observational network targets changes in the Arctic Ocean Chemistry",
+            "children": [
+                {
+                    "name": "Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Chemistry",
+                    "size": 100
+                },
+                {
+                    "name": "Stable Isotopes Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Chemistry",
+                    "size": 100
+                },
+                {
+                    "name": "Trace Elements Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Chemistry",
+                    "size": 100
+                },
+                {
+                    "name": "Nutrients Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Ocean Chemistry",
+                    "size": 100
+                },
+                {
+                    "name": "Carbon",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Table 2 - Hg and trace element variations in piston core PC-01 96/1, Lomonosov Ridge, Arctic Ocean (Gleason et al)",
+            "children": [
+                {
+                    "name": "Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Marine Sediments",
+                    "size": 100
+                },
+                {
+                    "name": "Sediment Chemistry",
+                    "size": 100
+                }
+            ]
+        },
+        {
+            "name": "Table 1 - Mercury stable isotope data for Arctic Ocean marine sediments (56 Ma to present) obtained at the University of Michigan by CV-MC-ICPMS (Gleason et al)",
+            "children": [
+                {
+                    "name": "Oceans",
+                    "size": 100
+                },
+                {
+                    "name": "Marine Sediments",
+                    "size": 100
+                },
+                {
+                    "name": "Sediment Chemistry",
+                    "size": 100
+                }
+            ]
+        }
+    ]
+}
