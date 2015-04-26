@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+<meta charset="UTF-8" />
+
+<title>FacetView</title>
+
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+<script type="text/javascript" src="jquery.facetview.js"></script>
+<link rel="stylesheet" href="../new_facetview/vendor/bootstrap/css/bootstrap.min.css">
+<!--<script type="text/javascript" src="../new_facetview/vendor/bootstrap/js/bootstrap.min.js"></script>-->
+
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    jQuery('#embed_here').facetview();
+    $('#facetview_freetext').attr('placeholder','Search term');
+    $('body').css('font-family', 'Helvetica Neue,Helvetica,Arial,sans-serif');
+
+
+});
+</script>
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">Facetview</a>
+      <ul class="nav">
+        <li><a href="http://localhost:8983/solr/facetview/index.html">Home</a></li>
+        <li><a href="http://localhost:8983/solr/d3/index.html">D3</a></li>
+        <li><a href="http://localhost:8983/solr/banana/src/index.html">Banana</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<p>An example of FacetView.</p>
+
+<div id="embed_here">
+</div>
+</body>
+
+</html>
