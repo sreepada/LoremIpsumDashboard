@@ -1,78 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="bootstrap.min.css">
+<script src="jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="parse.js"></script>
 <style>
 
 .node circle {
-  fill: #fff;
-  stroke: steelblue;
-  stroke-width: 1.5px;
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
 }
 
 .link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 1.5px;
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
 }
 
 path {
-  stroke: #fff;
-  fill-rule: evenodd;
+    stroke: #fff;
+    fill-rule: evenodd;
 }
 
 text {
-  font-family: Arial, sans-serif;
-  font-size: 12px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: auto;
-  position: relative;
-  width: 960px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: auto;
+    position: relative;
+    width: 960px;
 }
 
 form {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
 }
 
 .node {
-  border: solid 1px white;
-  font: 10px sans-serif;
-  line-height: 12px;
-  overflow: hidden;
-  position: absolute;
-  text-indent: 2px;
+    border: solid 1px white;
+    font: 10px sans-serif;
+    line-height: 12px;
+    overflow: hidden;
+    position: absolute;
+    text-indent: 2px;
 }
 
 .top-buffer { margin-top:80px; }
 
 /* TREE */
 .node rect {
-  cursor: pointer;
-  fill: #fff;
-  fill-opacity: .5;
-  stroke: #3182bd;
-  stroke-width: 1.5px;
+    cursor: pointer;
+    fill: #fff;
+    fill-opacity: .5;
+    stroke: #3182bd;
+    stroke-width: 1.5px;
 }
 
 .node text {
-  font: 10px sans-serif;
-  pointer-events: none;
+    font: 10px sans-serif;
+    pointer-events: none;
 }
 
 path.link {
-  fill: none;
-  stroke: #9ecae1;
-  stroke-width: 1.5px;
+    fill: none;
+    stroke: #9ecae1;
+    stroke-width: 1.5px;
 }
 
 
@@ -80,50 +81,50 @@ path.link {
 
 .axis path,
 .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
 }
 
 .bar {
-  fill: orange;
+    fill: orange;
 }
 
 .bar:hover {
-  fill: orangered ;
+    fill: orangered ;
 }
 
 .x.axis path {
-  display: none;
+    display: none;
 }
 
 .d3-tip {
-  line-height: 1;
-  font-weight: bold;
-  padding: 12px;
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  border-radius: 2px;
+    line-height: 1;
+    font-weight: bold;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 2px;
 }
 
 /* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
-  box-sizing: border-box;
-  display: inline;
-  font-size: 10px;
-  width: 100%;
-  line-height: 1;
-  color: rgba(0, 0, 0, 0.8);
-  content: "\25BC";
-  position: absolute;
-  text-align: center;
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
 }
 
 /* Style northward tooltips differently */
 .d3-tip.n:after {
-  margin: -1px 0 0 0;
-  top: 100%;
-  left: 0;
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
 }
 
 
@@ -134,127 +135,135 @@ path.link {
 <body>
 
 <div class="container">
-  <div class="jumbotron">
+    <div class="jumbotron">
 
-  </div>
-  <div class="row top-buffer" id="sunburst">
-  </div>
-  <div class="row top-buffer" id="dendogram">
+    </div>
+    <div class="row top-buffer" id="sunburst">
+    </div>
+    <div class="row top-buffer" id="dendogram">
 
-  </div>
-  <div class="row top-buffer" id="bubblechart">
+    </div>
+    <div class="row top-buffer" id="bubblechart">
 
-  </div>  
-  <div class="row top-buffer" id="treemap">
+    </div>  
+    <div class="row top-buffer" id="treemap">
 
-  </div> 
+    </div> 
 
-  <div class="row top-buffer" id="citree">
+    <div class="row top-buffer" id="citree">
 
-  </div> 
-  
+    </div> 
+
 </div>
 
 </body>
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="d3.v3.min.js"></script>
 <script>
 $(document).ready(function() {
 
-  sunburst();
-  dendogram();
-  bubblechart();
-  treemap();
-  citree();
-  //plot_bar();
+        sunburst();
+        dendogram();
+        bubblechart();
+        treemap();
+        citree();
+        //plot_bar();
 
-});
+        });
 
 
 // Interpolate the scales!
 function arcTween(d,x,y, radius) {
-  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
-      yd = d3.interpolate(y.domain(), [d.y, 1]),
-      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
-  return function(d, i) {
-    return i
-        ? function(t) { return arc(d); }
+    var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+        yd = d3.interpolate(y.domain(), [d.y, 1]),
+        yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+    return function(d, i) {
+        return i
+            ? function(t) { return arc(d); }
         : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
-  };
+    };
 }
 
 function computeTextRotation(d,x,y) {
-  return (x(d.x + d.dx / 2) - Math.PI / 2) / Math.PI * 180;
+    return (x(d.x + d.dx / 2) - Math.PI / 2) / Math.PI * 180;
 }
 
 function sunburst () {
 
-  var width = 960;
-  var height = 1200;
-  var radius = Math.min(width, height) / 2;
+    var width = 960;
+    var height = 1200;
+    var radius = Math.min(width, height) / 2;
 
-  var x = d3.scale.linear()
-      .range([0, 2 * Math.PI]);
+    var x = d3.scale.linear()
+        .range([0, 2 * Math.PI]);
 
-  var y = d3.scale.linear()
-      .range([0, radius]);
+    var y = d3.scale.linear()
+        .range([0, radius]);
 
-  var color = d3.scale.category20c();
+    var color = d3.scale.category20c();
 
-  var svg = d3.select("#sunburst").append("svg")
-      .attr("width", width)
-      .attr("height", height)
-    .append("g")
-      .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
+    var svg = d3.select("#sunburst").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
 
-  var partition = d3.layout.partition()
-      .value(function(d) { return d.size; });
+    var partition = d3.layout.partition()
+        .value(function(d) { return d.size; });
 
-  var arc = d3.svg.arc()
-      .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
-      .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
-      .innerRadius(function(d) { return Math.max(0, y(d.y)); })
-      .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+    var arc = d3.svg.arc()
+        .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
+        .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
+        .innerRadius(function(d) { return Math.max(0, y(d.y)); })
+        .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
 
-  d3.json("arctic_ocean.json", function(error, root) {
+    var root = JSON.parse(finalJson);
     var g = svg.selectAll("g")
         .data(partition.nodes(root))
-      .enter().append("g");
+        .enter().append("g");
 
     var path = g.append("path")
-      .attr("d", arc)
-      .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
-      .on("click", click);
+        .attr("d", arc)
+        .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+        .on("click", click);
 
     var text = g.append("text")
-      .attr("transform", function(d) { return "rotate(" + computeTextRotation(d,x,y) + ")"; })
-      .attr("x", function(d) { return y(d.y); })
-      .attr("dx", "6") // margin
-      .attr("dy", ".35em") // vertical-align
-      .text(function(d) { return d.name; });
+        .attr("transform", function(d) { return "rotate(" + computeTextRotation(d,x,y) + ")"; })
+        .attr("x", function(d) { return y(d.y); })
+        .attr("dx", "6") // margin
+        .attr("dy", ".35em") // vertical-align
+        .html(function(d) {  
+                var finalString = '<a href=" " title="' + d.name + '">';
+                if (d.name.split(" ")[0] !== undefined)
+                finalString += d.name.split(" ")[0] + ' ';
+                if (d.name.split(" ")[1] !== undefined)
+                finalString += d.name.split(" ")[1] + ' ';
+                if (d.name.split(" ")[2] !== undefined)
+                finalString += d.name.split(" ")[2] + ' ';
+                finalString += '</a>';
+                return finalString;  });
 
     function click(d) {
-      // fade out all text elements
-      text.transition().attr("opacity", 0);
+        // fade out all text elements
+        text.transition().attr("opacity", 0);
 
-      path.transition()
-        .duration(750)
-        .attrTween("d", arcTween(d,x,y,radius))
-        .each("end", function(e, i) {
-            // check if the animated element's data e lies within the visible angle span given in d
-            if (e.x >= d.x && e.x < (d.x + d.dx)) {
-              // get a selection of the associated text element
-              var arcText = d3.select(this.parentNode).select("text");
-              // fade in the text element and recalculate positions
-              arcText.transition().duration(750)
-                .attr("opacity", 1)
-                .attr("transform", function() { return "rotate(" + computeTextRotation(e,x,y) + ")" })
-                .attr("x", function(d) { return y(d.y); });
-            }
-        });
+        path.transition()
+            .duration(750)
+            .attrTween("d", arcTween(d,x,y,radius))
+            .each("end", function(e, i) {
+                    // check if the animated element's data e lies within the visible angle span given in d
+                    if (e.x >= d.x && e.x < (d.x + d.dx)) {
+                    // get a selection of the associated text element
+                    var arcText = d3.select(this.parentNode).select("text");
+                    // fade in the text element and recalculate positions
+                    arcText.transition().duration(750)
+                    .attr("opacity", 1)
+                    .attr("transform", function() { return "rotate(" + computeTextRotation(e,x,y) + ")" })
+                    .attr("x", function(d) { return y(d.y); });
+                    }
+                    });
     }
-  });
 
-  d3.select(self.frameElement).style("height", height + "px");
+    d3.select(self.frameElement).style("height", height + "px");
 }
 
 
@@ -262,48 +271,56 @@ function sunburst () {
 /////////////////////////////////// DENDOGRAM BEGINS ///////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 function dendogram () {
-var diameter = 1200;
+    var diameter = 1200;
 
-var tree = d3.layout.tree()
-    .size([360, diameter / 2 - 120])
-    .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+    var tree = d3.layout.tree()
+        .size([360, diameter / 2 - 120])
+        .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
 
-var diagonal = d3.svg.diagonal.radial()
-    .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
+    var diagonal = d3.svg.diagonal.radial()
+        .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
 
-var svg2 = d3.select("#dendogram").append("svg")
-    .attr("width", diameter)
-    .attr("height", diameter)
-  .append("g")
-    .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+    var svg2 = d3.select("#dendogram").append("svg")
+        .attr("width", diameter)
+        .attr("height", diameter)
+        .append("g")
+        .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
-d3.json("arctic_ocean.json", function(error, root) {
-  var nodes = tree.nodes(root),
-      links = tree.links(nodes);
+    var root = JSON.parse(finalJson);
+    var nodes = tree.nodes(root),
+        links = tree.links(nodes);
 
-  var link = svg2.selectAll(".link")
-      .data(links)
-    .enter().append("path")
-      .attr("class", "link")
-      .attr("d", diagonal);
+    var link = svg2.selectAll(".link")
+        .data(links)
+        .enter().append("path")
+        .attr("class", "link")
+        .attr("d", diagonal);
 
-  var node = svg2.selectAll(".node")
-      .data(nodes)
-    .enter().append("g")
-      .attr("class", "node")
-      .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
+    var node = svg2.selectAll(".node")
+        .data(nodes)
+        .enter().append("g")
+        .attr("class", "node")
+        .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
 
-  node.append("circle")
-      .attr("r", 4.5);
+        node.append("circle")
+        .attr("r", 4.5);
 
-  node.append("text")
-      .attr("dy", ".31em")
-      .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
-      .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
-      .text(function(d) { return d.name; });
-});
+    node.append("text")
+        .attr("dy", ".31em")
+        .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
+        .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
+        .html(function(d) {  
+                var finalString = '<a href=" " title="' + d.name + '">';
+                if (d.name.split(" ")[0] !== undefined)
+                finalString += d.name.split(" ")[0] + ' ';
+                if (d.name.split(" ")[1] !== undefined)
+                finalString += d.name.split(" ")[1] + ' ';
+                if (d.name.split(" ")[2] !== undefined)
+                finalString += d.name.split(" ")[2] + ' ';
+                finalString += '</a>';
+                return finalString;  });
 
-d3.select(self.frameElement).style("height", diameter - 150 + "px");
+    d3.select(self.frameElement).style("height", diameter - 150 + "px");
 
 }
 
@@ -312,37 +329,37 @@ d3.select(self.frameElement).style("height", diameter - 150 + "px");
 ////////////////////////////////////////////////////////////////////////////////////////
 // Returns a flattened hierarchy containing all leaf nodes under the root.
 function classes(root) {
-  var classes = [];
+    var classes = [];
 
-  function recurse(name, node) {
-    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-    else classes.push({packageName: name, className: node.name, value: Math.random()});
-  }
+    function recurse(name, node) {
+        if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+        else classes.push({packageName: name, className: node.name, value: Math.random()});
+    }
 
-  recurse(null, root);
-  return {children: classes};
+    recurse(null, root);
+    return {children: classes};
 }
 
 function bubblechart() {
     var diameter = 960,
-      format = d3.format(",d"),
-      color = d3.scale.category20c();
+        format = d3.format(",d"),
+        color = d3.scale.category20c();
 
-  var bubble = d3.layout.pack()
-      .sort(null)
-      .size([diameter, diameter])
-      .padding(1.5);
+    var bubble = d3.layout.pack()
+        .sort(null)
+        .size([diameter, diameter])
+        .padding(1.5);
 
-  var svg = d3.select("#bubblechart").append("svg")
-      .attr("width", diameter)
-      .attr("height", diameter)
-      .attr("class", "bubble");
+    var svg = d3.select("#bubblechart").append("svg")
+        .attr("width", diameter)
+        .attr("height", diameter)
+        .attr("class", "bubble");
 
-  d3.json("arctic_ocean.json", function(error, root) {
+    var root = JSON.parse(finalJson);
     var node = svg.selectAll(".node")
         .data(bubble.nodes(classes(root))
-        .filter(function(d) { return !d.children; }))
-      .enter().append("g")
+                .filter(function(d) { return !d.children; }))
+        .enter().append("g")
         .attr("class", "node")
         .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
@@ -357,8 +374,7 @@ function bubblechart() {
         .attr("dy", ".3em")
         .style("text-anchor", "middle")
         .text(function(d) { return d.className.substring(0, d.r / 3); });
-  });
-  d3.select(self.frameElement).style("height", diameter + "px");
+    d3.select(self.frameElement).style("height", diameter + "px");
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -367,52 +383,51 @@ function bubblechart() {
 
 
 function position() {
-  this.style("left", function(d) { return d.x + "px"; })
-      .style("top", function(d) { return d.y + "px"; })
-      .style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })
-      .style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; });
+    this.style("left", function(d) { return d.x + "px"; })
+        .style("top", function(d) { return d.y + "px"; })
+        .style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })
+        .style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; });
 }
 
 function treemap() {
-  var margin = {top: 40, right: 10, bottom: 10, left: 10},
-      width = 960 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
+    var margin = {top: 40, right: 10, bottom: 10, left: 10},
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
 
-  var color = d3.scale.category20c();
+    var color = d3.scale.category20c();
 
-  var treemap = d3.layout.treemap()
-      .size([width, height])
-      .sticky(true)
-      .value(function(d) { return d.size; });
+    var treemap = d3.layout.treemap()
+        .size([width, height])
+        .sticky(true)
+        .value(function(d) { return d.size; });
 
-  var div = d3.select("#treemap").append("div")
-      .style("position", "relative")
-      .style("width", (width + margin.left + margin.right) + "px")
-      .style("height", (height + margin.top + margin.bottom) + "px")
-      .style("left", margin.left + "px")
-      .style("top", margin.top + "px");
+    var div = d3.select("#treemap").append("div")
+        .style("position", "relative")
+        .style("width", (width + margin.left + margin.right) + "px")
+        .style("height", (height + margin.top + margin.bottom) + "px")
+        .style("left", margin.left + "px")
+        .style("top", margin.top + "px");
 
-  d3.json("arctic_ocean.json", function(error, root) {
+    var root = JSON.parse(finalJson);
     var node = div.datum(root).selectAll(".node")
         .data(treemap.nodes)
-      .enter().append("div")
+        .enter().append("div")
         .attr("class", "node")
         .call(position)
         .style("background", function(d) { return d.children ? color(d.name) : null; })
         .text(function(d) { return d.children ? null : d.name; });
 
     d3.selectAll("input").on("change", function change() {
-      var value = this.value === "count"
-          ? function() { return 1; }
-          : function(d) { return d.size; };
+            var value = this.value === "count"
+            ? function() { return 1; }
+            : function(d) { return d.size; };
 
-      node
-          .data(treemap.value(value).nodes)
-        .transition()
-          .duration(1500)
-          .call(position);
-    });
-  });  
+            node
+            .data(treemap.value(value).nodes)
+            .transition()
+            .duration(1500)
+            .call(position);
+            });
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -420,159 +435,165 @@ function treemap() {
 ////////////////////////////////////////////////////////////////////////////////////////
 
 function click(d) {
-  if (d.children) {
-    d._children = d.children;
-    d.children = null;
-  } else {
-    d.children = d._children;
-    d._children = null;
-  }
-  update(d);
+    if (d.children) {
+        d._children = d.children;
+        d.children = null;
+    } else {
+        d.children = d._children;
+        d._children = null;
+    }
+    update(d);
 }
 
 
 
 function color(d) {
-  return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#fd8d3c";
+    return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#fd8d3c";
 }
 
 function update(source, tree, barHeight, barWidth, margin, duration, svg, diagonal, i) {
 
-  // Compute the flattened node list. TODO use d3.layout.hierarchy.
-  var nodes = tree.nodes(source);
+    // Compute the flattened node list. TODO use d3.layout.hierarchy.
+    var nodes = tree.nodes(source);
 
-  var height2 = Math.max(500, nodes.length * barHeight + margin.top + margin.bottom);
+    var height2 = Math.max(500, nodes.length * barHeight + margin.top + margin.bottom);
 
-  d3.select("svg#citsvgid").transition()
-      .duration(duration)
-      .attr("height", height2);
+    d3.select("svg#citsvgid").transition()
+        .duration(duration)
+        .attr("height", height2);
 
-  d3.select(self.frameElement).transition()
-      .duration(duration)
-      .style("height", height2 + "px");
+    d3.select(self.frameElement).transition()
+        .duration(duration)
+        .style("height", height2 + "px");
 
-  // Compute the "layout".
-  nodes.forEach(function(n, i) {
-    n.x = i * barHeight;
-  });
+    // Compute the "layout".
+    nodes.forEach(function(n, i) {
+            n.x = i * barHeight;
+            });
 
-  // Update the nodes…
-  var node = svg.selectAll("g.node")
-      .data(nodes, function(d) { return d.id || (d.id = ++i); });
+    // Update the nodes…
+    var node = svg.selectAll("g.node")
+        .data(nodes, function(d) { return d.id || (d.id = ++i); });
 
-  var nodeEnter = node.enter().append("g")
-      .attr("class", "node")
-      .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-      .style("opacity", 1e-6);
+    var nodeEnter = node.enter().append("g")
+        .attr("class", "node")
+        .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+        .style("opacity", 1e-6);
 
-  // Enter any new nodes at the parent's previous position.
-  nodeEnter.append("rect")
-      .attr("y", -barHeight / 2)
-      .attr("height", barHeight)
-      .attr("width", barWidth)
-      .style("fill", color);
-      // .on("click", function(source, tree, barHeight, barWidth, margin, duration, svg, diagonal, i) {
-      //     if (source.children) {
-      //       source._children = source.children;
-      //       source.children = null;
-      //     } else {
-      //       source.children = source._children;
-      //       source._children = null;
-      //     }
-      //     update(source, tree, barHeight, barWidth, margin, duration, svg, diagonal, i);
+    // Enter any new nodes at the parent's previous position.
+    nodeEnter.append("rect")
+        .attr("y", -barHeight / 2)
+        .attr("height", barHeight)
+        .attr("width", barWidth)
+        .style("fill", color);
+    // .on("click", function(source, tree, barHeight, barWidth, margin, duration, svg, diagonal, i) {
+    //     if (source.children) {
+    //       source._children = source.children;
+    //       source.children = null;
+    //     } else {
+    //       source.children = source._children;
+    //       source._children = null;
+    //     }
+    //     update(source, tree, barHeight, barWidth, margin, duration, svg, diagonal, i);
 
-      // });
-  nodeEnter.append("text")
-      .attr("dy", 3.5)
-      .attr("dx", 5.5)
-      .text(function(d) { return d.name; });
+    // });
+    nodeEnter.append("text")
+        .attr("dy", 3.5)
+        .attr("dx", 5.5)
+        .html(function(d) {  
+                var finalString = '<a href=" " title="' + d.name + '">';
+                if (d.name.split(" ")[0] !== undefined)
+                finalString += d.name.split(" ")[0] + ' ';
+                if (d.name.split(" ")[1] !== undefined)
+                finalString += d.name.split(" ")[1] + ' ';
+                if (d.name.split(" ")[2] !== undefined)
+                finalString += d.name.split(" ")[2] + ' ';
+                finalString += '</a>';
+                return finalString;  });
 
-  // Transition nodes to their new position.
-  nodeEnter.transition()
-      .duration(duration)
-      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
-      .style("opacity", 1);
+    // Transition nodes to their new position.
+    nodeEnter.transition()
+        .duration(duration)
+        .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+        .style("opacity", 1);
 
-  node.transition()
-      .duration(duration)
-      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
-      .style("opacity", 1)
-    .select("rect")
-      .style("fill", color);
+    node.transition()
+        .duration(duration)
+        .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+        .style("opacity", 1)
+        .select("rect")
+        .style("fill", color);
 
-  // Transition exiting nodes to the parent's new position.
-  node.exit().transition()
-      .duration(duration)
-      .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
-      .style("opacity", 1e-6)
-      .remove();
+    // Transition exiting nodes to the parent's new position.
+    node.exit().transition()
+        .duration(duration)
+        .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+        .style("opacity", 1e-6)
+        .remove();
 
-  // Update the links…
-  var link = svg.selectAll("path.link")
-      .data(tree.links(nodes), function(d) { return d.target.id; });
+    // Update the links…
+    var link = svg.selectAll("path.link")
+        .data(tree.links(nodes), function(d) { return d.target.id; });
 
-  // Enter any new links at the parent's previous position.
-  link.enter().insert("path", "g")
-      .attr("class", "link")
-      .attr("d", function(d) {
-        var o = {x: source.x0, y: source.y0};
-        return diagonal({source: o, target: o});
-      })
+    // Enter any new links at the parent's previous position.
+    link.enter().insert("path", "g")
+        .attr("class", "link")
+        .attr("d", function(d) {
+                var o = {x: source.x0, y: source.y0};
+                return diagonal({source: o, target: o});
+                })
     .transition()
-      .duration(duration)
-      .attr("d", diagonal);
+        .duration(duration)
+        .attr("d", diagonal);
 
-  // Transition links to their new position.
-  link.transition()
-      .duration(duration)
-      .attr("d", diagonal);
+    // Transition links to their new position.
+    link.transition()
+        .duration(duration)
+        .attr("d", diagonal);
 
-  // Transition exiting nodes to the parent's new position.
-  link.exit().transition()
-      .duration(duration)
-      .attr("d", function(d) {
-        var o = {x: source.x, y: source.y};
-        return diagonal({source: o, target: o});
-      })
-      .remove();
+    // Transition exiting nodes to the parent's new position.
+    link.exit().transition()
+        .duration(duration)
+        .attr("d", function(d) {
+                var o = {x: source.x, y: source.y};
+                return diagonal({source: o, target: o});
+                })
+    .remove();
 
-  // Stash the old positions for transition.
-  nodes.forEach(function(d) {
-    d.x0 = d.x;
-    d.y0 = d.y;
-  });
+    // Stash the old positions for transition.
+    nodes.forEach(function(d) {
+            d.x0 = d.x;
+            d.y0 = d.y;
+            });
 }
 
 function citree() {
 
-  var margin = {top: 30, right: 20, bottom: 30, left: 20},
-      width = 960 - margin.left - margin.right,
-      barHeight = 20,
-      barWidth = width * .8;
+    var margin = {top: 30, right: 20, bottom: 30, left: 20},
+        width = 960 - margin.left - margin.right,
+        barHeight = 20,
+        barWidth = width * .8;
 
-  var i = 0,
-      duration = 400,
-      root;
+    var i = 0,
+        duration = 400,
+        root;
 
-  var tree = d3.layout.tree()
-      .nodeSize([0, 20]);
+    var tree = d3.layout.tree()
+        .nodeSize([0, 20]);
 
-  var diagonal = d3.svg.diagonal()
-      .projection(function(d) { return [d.y, d.x]; });
+    var diagonal = d3.svg.diagonal()
+        .projection(function(d) { return [d.y, d.x]; });
 
-  var svg = d3.select("#citree").append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("id","citsvgid")
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    var svg = d3.select("#citree").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("id","citsvgid")
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  d3.json("arctic_ocean.json", function(error, flare) {
-    flare.x0 = 0;
-    flare.y0 = 0;
-    update(root = flare, tree, barHeight, barWidth, margin, duration, svg, diagonal, i);
-  });
-
-
+    var root = JSON.parse(finalJson);
+    root.x0 = 0;
+    root.y0 = 0;
+    update(root, tree, barHeight, barWidth, margin, duration, svg, diagonal, i);
 }
 
 
@@ -597,64 +618,64 @@ function plot_bar()
     var margin = {top: 40, right: 20, bottom: 30, left: 40},
         width = 500 - margin.left - margin.right,
         height = 300 - margin.top - margin.bottom;
-        //width = 960 - margin.left - margin.right,
-        //height = 500 - margin.top - margin.bottom;
-    
+    //width = 960 - margin.left - margin.right,
+    //height = 500 - margin.top - margin.bottom;
+
     var formatPercent = d3.format("");
-    
+
     var x = d3.scale.ordinal()
         .rangeRoundBands([0, width], .1);
-    
+
     var y = d3.scale.linear()
         .range([height, 0]);
-    
+
     var xAxis = d3.svg.axis()
         .scale(x)
         .orient("bottom");
-    
+
     var yAxis = d3.svg.axis()
         .scale(y)
         .orient("left")
         .tickFormat(formatPercent);
-    
+
     var tip = d3.tip()
-      .attr('class', 'd3-tip')
-      .offset([-10, 0])
-      .html(function(d) {
-        return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span><strong> Location:</strong> <span>" + d.letter + "</span>";
-      })
-    
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(d) {
+                return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span><strong> Location:</strong> <span>" + d.letter + "</span>";
+                })
+
     var svg = d3.select("body").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
-      .append("g")
+        .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-    
+
     svg.call(tip);
     var str_data = httpGet("http://localhost:8983/solr/select?q=*:*&fl=id,location_s__s&wt=json&indent=true&rows=1000");
-    
+
     var json_data = JSON.parse(str_data)["response"]["docs"];
     var my_array = [];
-    
+
     json_data.map(function(d){ 
             if("location_s__s" in d)
             {
-                var locations = d["location_s__s"].split(",");
-                for(i = 0; i < locations.length; i++)
-                {
-                    loc = locations[i].trim();
-                    if(!(loc in my_array))
-                    {
-                        my_array[loc]  = 1;
-                    }
-                    else
-                    {
-                        my_array[loc] += 1;
-                    }
-                }
+            var locations = d["location_s__s"].split(",");
+            for(i = 0; i < locations.length; i++)
+            {
+            loc = locations[i].trim();
+            if(!(loc in my_array))
+            {
+            my_array[loc]  = 1;
             }
-        });
-    
+            else
+            {
+            my_array[loc] += 1;
+            }
+            }
+            }
+            });
+
     var data_1 = [];
     for(key in my_array)
     {
@@ -662,43 +683,43 @@ function plot_bar()
         data_1[data_1.length] = {"letter":key, "frequency":value};
     }
     data_1.sort(function(a, b) {return b["frequency"] - a["frequency"]});
-    
+
     var len = data_1.length;
     if(len > 10)
     {
         len = 10;
     }
-    
+
     var data = []
-    
-    for(i = 0; i < len; i++)
-    {
-        data[data.length] = data_1[i];
-    }
-    
-    
+
+        for(i = 0; i < len; i++)
+        {
+            data[data.length] = data_1[i];
+        }
+
+
     //data = [{"letter":"A", "frequency":3}, {"letter":"B", "frequency":20}];
     x.domain(data.map(function(d) { return d.letter; }));
     y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
-    
+
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
-    
+
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis)
-      .append("text")
+        .append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
         .text("Count");
-    
+
     svg.selectAll(".bar")
         .data(data)
-      .enter().append("rect")
+        .enter().append("rect")
         .attr("class", "bar")
         .attr("x", function(d) { return x(d.letter); })
         .attr("width", x.rangeBand())
@@ -706,11 +727,11 @@ function plot_bar()
         .attr("height", function(d) { return height - y(d.frequency); })
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide)
-    
-    function type(d) {
-      d.frequency = +d.frequency;
-      return d;
-    }
+
+        function type(d) {
+            d.frequency = +d.frequency;
+            return d;
+        }
 }
 </script>
 </html>
