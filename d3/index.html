@@ -9,6 +9,7 @@
 <script src="bootstrap.min.js"></script>
 <script src="parse.js"></script>
 <script src="d3.v3.min.js"></script>
+<script src="d3.tip.js"></script>
 <style>
 
 .node circle {
@@ -176,7 +177,6 @@ path.link {
 </div>
 
 </body>
-<script src="d3.tip.js"></script>
 <script>
 $(document).ready(function() {
 
@@ -213,8 +213,8 @@ function arcTween(d,x,y, radius) {
         yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
     return function(d, i) {
         return i
-            ? function(t) { return arc(d); }
-        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
+            ? function(t) { return d3.svg.arc(d); }
+        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return d3.svg.arc(d); };
     };
 }
 
@@ -521,6 +521,7 @@ function update(source, tree, barHeight, barWidth, margin, duration, svg, diagon
         .attr("height", barHeight)
         .attr("width", barWidth)
         .style("fill", color);
+    //    .on("click", click2);
     // .on("click", function(source, tree, barHeight, barWidth, margin, duration, svg, diagonal, i) {
     //     if (source.children) {
     //       source._children = source.children;
