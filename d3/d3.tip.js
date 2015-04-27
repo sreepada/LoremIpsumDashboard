@@ -18,7 +18,7 @@ d3.tip = function() {
   function tip(vis) {
     svg = getSVGNode(vis)
     point = svg.createSVGPoint()
-    document.body.appendChild(node)
+    document.getElementById("plotbar").appendChild(node)
   }
 
   // Public - show the tooltip on the screen

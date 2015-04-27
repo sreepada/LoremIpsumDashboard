@@ -8,6 +8,7 @@
 <script src="jquery.min.js"></script>
 <script src="bootstrap.min.js"></script>
 <script src="parse.js"></script>
+<script src="d3.v3.min.js"></script>
 <style>
 
 .node circle {
@@ -36,6 +37,7 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: auto;
     position: relative;
+    padding-top: 70px;
     width: 960px;
 }
 
@@ -134,9 +136,23 @@ path.link {
 </head>
 <body>
 
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="#">D3</a>
+            <ul class="nav">
+                <li><a href="http://localhost:8983/solr/d3/index.html">Home</a></li>
+                <li><a href="http://localhost:8983/solr/facetview/index.html">FacetView</a></li>
+                <li><a href="http://localhost:8983/solr/banana/src/index.html">Banana</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="jumbotron">
-
+        <input type="text" id="searchField" value="location_s__s: Artic Ocean*" />
+        <button type="button" id="searchButton" onclick="visualizeAgain()">Search</button>
     </div>
     <div class="row top-buffer" id="sunburst">
     </div>
@@ -153,24 +169,43 @@ path.link {
     <div class="row top-buffer" id="citree">
 
     </div> 
+    <div class="row top-buffer" id="plotbar">
+
+    </div> 
 
 </div>
 
 </body>
-<script src="d3.v3.min.js"></script>
+<script src="d3.tip.js"></script>
 <script>
 $(document).ready(function() {
 
+        finalJson = getResultsJson("");
         sunburst();
         dendogram();
         bubblechart();
         treemap();
         citree();
-        //plot_bar();
+        plot_bar();
 
         });
 
-
+function visualizeAgain() {
+    var searchString = document.getElementById("searchField").value;
+    finalJson = getResultsJson(searchString);
+    document.getElementById("sunburst").innerHTML = "";
+    document.getElementById("dendogram").innerHTML = "";
+    document.getElementById("bubblechart").innerHTML = "";
+    document.getElementById("treemap").innerHTML = "";
+    document.getElementById("citree").innerHTML = "";
+    document.getElementById("plotbar").innerHTML = "";
+    sunburst();
+    dendogram();
+    bubblechart();
+    treemap();
+    citree();
+    plot_bar();
+}
 // Interpolate the scales!
 function arcTween(d,x,y, radius) {
     var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
@@ -615,9 +650,9 @@ function plot_bar()
 {
 
 
-    var margin = {top: 40, right: 20, bottom: 30, left: 40},
+    var margin = {top: 40, right: 20, bottom: 100, left: 40},
         width = 500 - margin.left - margin.right,
-        height = 300 - margin.top - margin.bottom;
+        height = 400 - margin.top - margin.bottom;
     //width = 960 - margin.left - margin.right,
     //height = 500 - margin.top - margin.bottom;
 
@@ -643,9 +678,9 @@ function plot_bar()
         .offset([-10, 0])
         .html(function(d) {
                 return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span><strong> Location:</strong> <span>" + d.letter + "</span>";
-                })
+                });
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select("#plotbar").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -705,7 +740,14 @@ function plot_bar()
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
+        .call(xAxis)
+        .selectAll("text")  
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", ".15em")
+        .attr("transform", function(d) {
+                return "rotate(-30)" 
+                });
 
     svg.append("g")
         .attr("class", "y axis")
