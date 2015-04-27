@@ -1,5 +1,5 @@
 {
-  "title": "New Time Series Dashboard",
+  "title": "Banana",
   "services": {
     "query": {
       "idQueue": [
@@ -24,72 +24,25 @@
     },
     "filter": {
       "idQueue": [
+        0,
         1,
         2
       ],
-      "list": {
-        "0": {
-          "from": "NOW/MINUTE-15MINUTE",
-          "to": "NOW/MINUTE%2B1MINUTE",
-          "field": "",
-          "type": "time",
-          "fromDateObj": "2014-08-20T12:53:56.895Z",
-          "toDateObj": "2014-08-20T13:08:56.895Z",
-          "mandate": "must",
-          "active": true,
-          "alias": "",
-          "id": 0
-        }
-      },
-      "ids": [
-        0
-      ]
+      "list": {},
+      "ids": []
     }
   },
   "rows": [
     {
-      "title": "Query and Time Window",
+      "title": "Query",
       "height": "50px",
       "editable": true,
       "collapse": false,
       "collapsable": true,
       "panels": [
         {
-          "error": "",
-          "span": 5,
-          "editable": true,
-          "type": "timepicker",
-          "loadingEditor": false,
-          "status": "Stable",
-          "mode": "relative",
-          "time_options": [
-            "5m",
-            "15m",
-            "1h",
-            "6h",
-            "12h",
-            "24h",
-            "7d",
-            "30d",
-            "90d",
-            "1y",
-            "5y"
-          ],
-          "timespan": "15m",
-          "timefield": "event_timestamp",
-          "timeformat": "",
-          "refresh": {
-            "enable": false,
-            "interval": 30,
-            "min": 3
-          },
-          "filter_id": 0,
-          "spyable": true,
-          "title": "Time Window"
-        },
-        {
           "error": false,
-          "span": 4,
+          "span": 9,
           "editable": true,
           "group": [
             "default"
@@ -99,7 +52,7 @@
           "history": [],
           "remember": 10,
           "pinned": true,
-          "query": "*:*",
+          "query": "*",
           "title": "Search",
           "spyable": true,
           "def_type": ""
@@ -114,7 +67,7 @@
             "ids": [
               0
             ],
-            "query": "q=*%3A*&&wt=json&rows=0",
+            "query": "q=*%3A*&wt=json&rows=0\n",
             "basic_query": "",
             "custom": ""
           },
@@ -128,31 +81,92 @@
           "tilt": false,
           "labels": true,
           "spyable": true,
-          "title": "Total Hits"
+          "title": "Total Hits",
+          "show_queries": true
         }
       ]
     },
     {
-      "title": "Filters",
-      "height": "50px",
+      "title": "Filter",
+      "height": "150px",
       "editable": true,
       "collapse": false,
       "collapsable": true,
       "panels": [
         {
           "error": false,
-          "span": 12,
+          "span": 5,
           "editable": true,
           "spyable": true,
           "group": [
             "default"
           ],
           "type": "filtering"
+        },
+        {
+          "span": 4,
+          "editable": true,
+          "type": "facet",
+          "loadingEditor": false,
+          "status": "Stable",
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0
+            ],
+            "query": "q=*%3A*&facet=true&facet.field=location_s__s&facet.field=science_keywords_s&wt=json",
+            "basic_query": "q=*%3A*&facet=true&facet.field=location_s__s&facet.field=science_keywords_s",
+            "custom": ""
+          },
+          "group": "default",
+          "style": {
+            "font-size": "9pt"
+          },
+          "overflow": "min-height",
+          "fields": [
+            "location_s__s",
+            "science_keywords_s"
+          ],
+          "field_list": true,
+          "spyable": true,
+          "facet_limit": 10,
+          "foundResults": true,
+          "header_title": "Limit Your Search",
+          "toggle_element": null,
+          "show_queries": true,
+          "title": "Facets",
+          "offset": 0,
+          "exportSize": null
+        },
+        {
+          "span": 3,
+          "editable": true,
+          "type": "heatmap",
+          "loadingEditor": false,
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0
+            ],
+            "query": "q=*%3A*&wt=json&rows=0&facet=true&facet.pivot=topic_s,location_s__s&facet.limit=300&facet.pivot.mincount=0",
+            "custom": ""
+          },
+          "size": 0,
+          "row_field": "topic_s",
+          "col_field": "location_s__s",
+          "row_size": 300,
+          "editor_size": 300,
+          "color": "gray",
+          "spyable": true,
+          "transpose_show": true,
+          "transposed": false,
+          "show_queries": true,
+          "title": "Heat map"
         }
       ]
     },
     {
-      "title": "Graph",
+      "title": "Events",
       "height": "250px",
       "editable": true,
       "collapse": false,
@@ -161,116 +175,109 @@
         {
           "span": 12,
           "editable": true,
-          "type": "histogram",
-          "loadingEditor": false,
-          "mode": "count",
-          "time_field": "event_timestamp",
-          "queries": {
-            "mode": "all",
-            "ids": [
-              0
-            ],
-            "query": "",
-            "custom": ""
-          },
-          "max_rows": 100000,
-          "value_field": null,
-          "group_field": null,
-          "auto_int": true,
-          "resolution": 100,
-          "interval": "10s",
-          "intervals": [
-            "auto",
-            "1s",
-            "1m",
-            "5m",
-            "10m",
-            "30m",
-            "1h",
-            "3h",
-            "12h",
-            "1d",
-            "1w",
-            "1M",
-            "1y"
+          "group": [
+            "default"
           ],
-          "fill": 0,
-          "linewidth": 3,
-          "timezone": "browser",
-          "spyable": true,
-          "zoomlinks": true,
-          "bars": true,
-          "stack": true,
-          "points": false,
-          "lines": false,
-          "legend": true,
-          "x-axis": true,
-          "y-axis": true,
-          "percentage": false,
-          "interactive": true,
-          "options": true,
-          "tooltip": {
-            "value_type": "cumulative",
-            "query_as_alias": false
-          },
-          "title": "Event Counts",
-          "lines_smooth": false,
-          "error": false
-        }
-      ]
-    },
-    {
-      "title": "Table",
-      "height": "150px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "error": false,
-          "span": 12,
-          "editable": true,
           "type": "table",
-          "loadingEditor": false,
-          "status": "Stable",
-          "queries": {
-            "mode": "all",
-            "ids": [
-              0
-            ],
-            "query": "",
-            "basic_query": "",
-            "custom": ""
-          },
-          "size": 100,
-          "pages": 5,
+          "size": 10,
+          "pages": 500,
           "offset": 0,
-          "sort": [],
-          "group": "default",
           "style": {
             "font-size": "9pt"
           },
           "overflow": "min-height",
-          "fields": [],
+          "fields": [
+            "data_center_s",
+            "title",
+            "topic_s",
+            "date_created_s"
+          ],
           "highlight": [],
           "sortable": false,
           "header": true,
           "paging": true,
+          "spyable": true,
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0
+            ],
+            "query": "q=*%3A*&wt=json&rows=5000",
+            "basic_query": "q=*%3A*"
+          },
           "field_list": true,
+          "status": "Stable",
           "trimFactor": 300,
           "normTimes": true,
-          "spyable": true,
+          "title": "Events",
           "saveOption": "json",
-          "exportSize": 500,
+          "exportSize": 5000,
           "exportAll": true,
           "displayLinkIcon": true,
           "imageFields": [],
           "imgFieldWidth": "auto",
           "imgFieldHeight": "85px",
-          "title": "Table panel"
+          "sort": [
+            "event_timestamp",
+            "desc"
+          ],
+          "important_fields": [
+            "_version_",
+            "attr_content",
+            "author_s",
+            "author_s__s",
+            "authoritative_source_s",
+            "award_numbers_s",
+            "bbox",
+            "bbox__maxX",
+            "bbox__maxY",
+            "bbox__minX",
+            "bbox__minY",
+            "bbox__xdl",
+            "co_principal_investigator_s",
+            "collaborating_principal_investigator_s",
+            "content_type",
+            "continuing_project_s",
+            "custodian_s",
+            "data_center_s",
+            "data_format_s__s",
+            "data_type_s__s",
+            "date_created_s",
+            "date_last_updated_s",
+            "description",
+            "description_s",
+            "doi_s",
+            "id",
+            "instrument_s__s",
+            "iso_topic_s__s",
+            "keywords",
+            "language_s",
+            "links",
+            "location_s__s",
+            "more_like_this_dataset_s",
+            "originator_s",
+            "page_rank_d",
+            "period_of_performance_s",
+            "platform_s__s",
+            "point_of_contact_s",
+            "preceding_project_s",
+            "principal_investigator_s",
+            "progress_s",
+            "project_group_s",
+            "related_links_s",
+            "resolution_s__s",
+            "resource_provider_s",
+            "science_keywords_s",
+            "text",
+            "time_coverage_s",
+            "time_frequency_ies__s",
+            "title",
+            "topic_s"
+          ],
+          "show_queries": true
         }
       ]
-    }    
+    }
   ],
   "editable": true,
   "index": {
@@ -299,7 +306,9 @@
   "solr": {
     "server": "/solr/",
     "core_name": "collection1",
-    "core_list": [],
+    "core_list": [
+      "collection1"
+    ],
     "global_params": ""
   }
 }
