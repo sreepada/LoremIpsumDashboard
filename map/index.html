@@ -49,7 +49,6 @@ function httpGet(theUrl)
     var query = "http://localhost:8983/solr/query?q=oil&fl=id,clavin_location_s&rows=1000";
     var str_data = httpGet(query);
     var json_data = JSON.parse(str_data)["response"]["docs"];
-    //alert(json_data);
     var data = {};
 
     json_data.map(function(d){ 
@@ -64,7 +63,6 @@ function httpGet(theUrl)
         }
     });
 
-    alert(JSON.stringify(data));
 
 
 // Create the Google Map…
